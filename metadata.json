@@ -1,0 +1,6 @@
+{
+  "name": "Display Master",
+  "description": "External display management with black screen phone mode, display awake keep-alive, custom resolution and HDR controls, live refresh rate and color accuracy dashboard, and touch profiles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
