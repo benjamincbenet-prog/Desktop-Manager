@@ -1,5 +1,7 @@
 package com.example.service
 
+import androidx.lifecycle.ViewTreeLifecycleOwner
+import androidx.savedstate.ViewTreeSavedStateRegistryOwner
 import android.app.Activity
 import android.app.Presentation
 import android.content.Context
@@ -291,6 +293,10 @@ class DisplayPresentationManager(private val activity: Activity) {
             super.onCreate(savedInstanceState)
             window?.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
             val composeView = ComposeView(context).apply {
+              // FIX: Explicitly set the lifecycle and saved state owners so Compose can find them
+              androidx.lifecycle.ViewTreeLifecycleOwner.set(this, activity as? androidx.lifecycle.LifecycleOwner)
+              androidx.savedstate.ViewTreeSavedStateRegistryOwner.set(this, activity as? androidx.savedstate.SavedStateRegistryOwner)
+      
               setContent {
                 DisplayMasterTheme {
                   ExternalPresentationContent(
